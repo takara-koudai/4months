@@ -11,7 +11,7 @@ public class csvScript : MonoBehaviour
 
     public GameObject Block;
 
-    enum Stage
+    enum Stage // csvファイル内番号の識別用
     {
         SPACE,
         BLOCK,
