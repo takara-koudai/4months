@@ -76,7 +76,6 @@ public class csvScript : MonoBehaviour
         LoadCSV();
         int lenY = map.GetLength(0);
         int lenX = map.GetLength(1);
-        Quaternion rotation = Quaternion.Euler(0, 180, 0);
         for (int x = 0; x < lenX; x++)
         {
             position.x = x;
