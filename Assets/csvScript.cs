@@ -9,6 +9,8 @@ public class csvScript : MonoBehaviour
 
     // 生成したいオブジェクトを登録
 
+    public GameObject Block;
+
     enum Stage
     {
         SPACE,
@@ -84,7 +86,7 @@ public class csvScript : MonoBehaviour
                 position.y = -y + lenY - 1;
                 if (map[y, x] == (int)Stage.BLOCK)
                 {
-                    Instantiate("生成したいオブジェクト", position, Quaternion.identity);
+                    Instantiate(Block, position, Quaternion.identity);
                 }
             }
         }
