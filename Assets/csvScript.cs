@@ -72,6 +72,7 @@ public class csvScript : MonoBehaviour
         }
     }
 
+    // 左最下ブロックの右上角が0,0にくるように
     void CreateStage()
     {
         Vector3 position = Vector3.zero;
@@ -80,10 +81,10 @@ public class csvScript : MonoBehaviour
         int lenX = map.GetLength(1);
         for (int x = 0; x < lenX; x++)
         {
-            position.x = x;
+            position.x = x-0.5f;
             for (int y = 0; y < lenY; y++)
             {
-                position.y = -y + lenY - 1;
+                position.y = -y + lenY - 1.5f;
                 if (map[y, x] == (int)Stage.BLOCK)
                 {
                     Instantiate(Block, position, Quaternion.identity);
