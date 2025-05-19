@@ -24,9 +24,8 @@ public class Enemy : MonoBehaviour
     {
         rb.velocity = new Vector2(-moveSpeed,rb.velocity.y);
 
-        Debug.Log(rb.velocity);
+        //Debug.Log(rb.velocity);
     }
-
 
 
 }
