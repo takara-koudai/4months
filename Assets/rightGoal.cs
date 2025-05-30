@@ -2,13 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goal : MonoBehaviour
+public class rightGoal : MonoBehaviour
 {
+    // Start is called before the first frame update
     [SerializeField]
     private int goalNum = 0;
-    public static bool flag = true;
-
-    // Start is called before the first frame update
     void Start()
     {
         
@@ -19,7 +17,4 @@ public class Goal : MonoBehaviour
     {
         
     }
-
-
-   
 }

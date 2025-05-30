@@ -8,11 +8,11 @@ public class Timer : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public float time = 3f;
+    public static float time = 5f;
     public float time2 = 1f;
     public TextMeshProUGUI timertext;
     public static bool flag = false;
-
+    public static float deadcount = 0;
     void Start()
     {
         flag = false;
@@ -41,5 +41,9 @@ public class Timer : MonoBehaviour
             }
         }
 
+        if(time >= 5)
+        {
+            deadcount += 1;
+        }
     }
 }

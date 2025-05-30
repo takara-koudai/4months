@@ -11,9 +11,25 @@ public class Command : MonoBehaviour
 {
 
     //Start is called before the first frame update
-
+    
     Dictionary<string, Vector2> movementMap = new Dictionary<string, Vector2>();
     private TextAsset csvFile;
+    [SerializeField]
+    private Text orderText;
+
+    List<string[]> csvData = new List<string[]>();
+    public class QA
+    {
+        public string order;
+        public string answer;
+
+        public QA(string order, string answer)
+        {
+            this.order = order;
+            this.answer = answer;
+        }
+    }
+
 
     void Start()
     {
@@ -26,7 +42,6 @@ public class Command : MonoBehaviour
         }
 
         StringReader reader = new StringReader(csvFile.text);
-        List<string[]> csvData = new List<string[]>();
 
         while(reader.Peek() > -1)
         {
@@ -34,23 +49,27 @@ public class Command : MonoBehaviour
             csvData.Add(line.Split(','));
         }
 
-        for(int i = 1; i< csvData.Count;i++)
-        {
-            string order = csvData[i][0];
-            int answer = int.Parse(csvData[i][1]);
-            if (order.Contains("¶")) movementMap[order] = new Vector2(-9, 0);
-            else if (order.Contains("‰E")) movementMap[order] = new Vector2(7, 1);
-            else if (order.Contains("ã")) movementMap[order] = new Vector2(0, 6);
-            else movementMap[order] = new Vector2(0, 0);
-        }
 
+        string[] lines = csvFile.text.Split(new char[] { '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries);
+        Debug.Log(csvData); 
+        Debug.Log(orderText);
+        SetOrder();
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+      
     }
-   
 
+    private void SetOrder()
+    {
+        if (csvData.Count == 9)
+        {
+
+        }
+        int randomIndex = Random.Range(1, csvData.Count - 1);
+        string text = csvData[randomIndex][0];
+        orderText.text = text;
+    }
 }

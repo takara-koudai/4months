@@ -7,7 +7,7 @@ public class player : MonoBehaviour
     public Rigidbody2D rb;
     public bool flag = false;
     float moveSpeed = 4f;
-    float jampspeed = 8f;
+    float jampspeed = 6f;
     public Vector2 teleport;
    // private bool isJamp;
 
@@ -47,17 +47,20 @@ public class player : MonoBehaviour
         {
             Debug.Log("è’ìÀÇµÇ‹ÇµÇΩ");
             transform.position = teleport;
+            Timer.time = 5f;
 
         }
         if (collsion.gameObject.CompareTag("Goal2"))
         {
             Debug.Log("è’ìÀÇµÇ‹ÇµÇΩ");
             transform.position = teleport;
+            Timer.time = 5f;
         }
         if (collsion.gameObject.CompareTag("Goal3"))
         {
             Debug.Log("è’ìÀÇµÇ‹ÇµÇΩ");
             transform.position = teleport;
+            Timer.time = 5f;
         }
     }
 
