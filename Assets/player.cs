@@ -39,16 +39,21 @@ public class player : MonoBehaviour
 
             //isJamp = true;
         }
+
+        if(Timer.time == 5f)
+        {
+            transform.position = teleport;
+        }
     }
 
-    private void OnCollisionEnter2D(Collision2D collsion)
+    private  void OnCollisionEnter2D(Collision2D collsion)
     {
         if (collsion.gameObject.CompareTag("Goal"))
         {
             Debug.Log("è’ìÀÇµÇ‹ÇµÇΩ");
             transform.position = teleport;
             Timer.time = 5f;
-
+            
         }
         if (collsion.gameObject.CompareTag("Goal2"))
         {
@@ -56,6 +61,7 @@ public class player : MonoBehaviour
             transform.position = teleport;
             Timer.time = 5f;
         }
+
         if (collsion.gameObject.CompareTag("Goal3"))
         {
             Debug.Log("è’ìÀÇµÇ‹ÇµÇΩ");

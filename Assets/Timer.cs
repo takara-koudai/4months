@@ -29,21 +29,26 @@ public class Timer : MonoBehaviour
         }
         else
         {
-            timertext.text = "time up!!";
-            flag = true;
+            //timertext.text = "time up!!";
+            //flag = true;
         }
         if (time <= 0)
         {
-            time2 -= Time.deltaTime;
-            if (time2 <= 0)
-            {
-                timertext.gameObject.SetActive(false);
-            }
+
+            time = 5;
+            deadcount += 1;
+            //time2 -= Time.deltaTime;
+            //if (time2 <= 0)
+            //{
+            //    timertext.gameObject.SetActive(false);
+            //}
         }
 
-        if(time >= 5)
+
+
+        if(deadcount >= 3)
         {
-            deadcount += 1;
+            Debug.Log("gameover");
         }
     }
 }

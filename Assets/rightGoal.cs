@@ -5,8 +5,7 @@ using UnityEngine;
 public class rightGoal : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField]
-    private int goalNum = 0;
+    
     void Start()
     {
         
