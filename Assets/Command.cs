@@ -16,7 +16,9 @@ public class Command : MonoBehaviour
     private  TextAsset csvFile;
     [SerializeField]
     private  Text orderText;
-
+    bool isColliding = false;
+    bool isColliding2 = true;
+    bool isColliding3 = true;
     List<string[]> csvData = new List<string[]>();
     public class QA
     {
@@ -51,30 +53,83 @@ public class Command : MonoBehaviour
 
 
         string[] lines = csvFile.text.Split(new char[] { '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries);
-        SetOrder();
+        //SetOrder();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if (Timer.time == 5)
+        Debug.Log(Timer.deadcount);
+        if (isColliding == false && Timer.time == 5)
         {
             SetOrder();
             Timer.deadcount += 1;
         }
-        Debug.Log(Timer.deadcount);
+        if (isColliding2 == false && Timer.time == 5)
+        {
+            SetOrder();
+            Timer.deadcount += 1;
+        }
+        if (isColliding3 == false && Timer.time == 5)
+        {
+            SetOrder();
+            Timer.deadcount += 1;
+        }
 
     }
 
-    private  void SetOrder()
+    private void SetOrder()
     {
         int randomIndex = Random.Range(1, csvData.Count - 1);
         string text = csvData[randomIndex][0];
         orderText.text = text;
 
     }
-   
 
+    private void OnCollisionEnter2D(Collision2D collsion)
+    {    //ê≥â
+        if (collsion.gameObject.CompareTag("Goal"))
+        {
+            transform.position = player.teleport;
+            Timer.time = 5f;
+            SetOrder();
+        }
+        if (collsion.gameObject.CompareTag("Goal2"))
+        {
+            transform.position = player.teleport;
+            Timer.time = 5f;
+            SetOrder();
+        }
+        if (collsion.gameObject.CompareTag("Goal3"))
+        {
+            transform.position = player.teleport;
+            Timer.time = 5f;
+            SetOrder();
+        }
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Goal"))
+        {
+            isColliding = true;
+        }
+        if (collision.gameObject.CompareTag("Goal2"))
+        {
+            isColliding2 = true;
+        }
+        if (collision.gameObject.CompareTag("Goal3"))
+        {
+            isColliding3 = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        isColliding = false;
+        isColliding2 = false;
+        isColliding3 = false;
+    }
 
 }

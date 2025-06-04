@@ -9,6 +9,7 @@ TagManager:
   - Goal2
   - Goal3
   - Goal4
+  - Dead
   layers:
   - Default
   - TransparentFX

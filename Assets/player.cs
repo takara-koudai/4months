@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class player : MonoBehaviour
 {
@@ -8,9 +9,9 @@ public class player : MonoBehaviour
     public bool flag = false;
     float moveSpeed = 4f;
     float jampspeed = 6f;
-    public Vector2 teleport;
-   // private bool isJamp;
-
+    public static Vector2 teleport;
+    // private bool isJamp;
+    public string nextSceneName;
 
     // Start is called before the first frame update
     void Start()
@@ -44,16 +45,20 @@ public class player : MonoBehaviour
         {
             transform.position = teleport;
         }
+
+        if(Timer.deadcount>=12)
+        {
+            SceneManager.LoadScene(nextSceneName);
+        }
     }
 
-    private  void OnCollisionEnter2D(Collision2D collsion)
+    private void OnCollisionEnter2D(Collision2D collsion)
     {
         if (collsion.gameObject.CompareTag("Goal"))
         {
             Debug.Log("è’ìÀÇµÇ‹ÇµÇΩ");
             transform.position = teleport;
             Timer.time = 5f;
-            
         }
         if (collsion.gameObject.CompareTag("Goal2"))
         {
@@ -68,6 +73,14 @@ public class player : MonoBehaviour
             transform.position = teleport;
             Timer.time = 5f;
         }
+
+        if (collsion.gameObject.CompareTag("Dead"))
+        {
+            transform.position = teleport;
+            Timer.deadcount++;
+            Timer.time = 5f;
+        }
+
     }
 
 }
