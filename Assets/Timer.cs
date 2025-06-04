@@ -44,11 +44,5 @@ public class Timer : MonoBehaviour
             //}
         }
 
-
-
-        if(deadcount >= 3)
-        {
-            Debug.Log("gameover");
-        }
     }
 }

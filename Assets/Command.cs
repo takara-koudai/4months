@@ -59,7 +59,8 @@ public class Command : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Timer.deadcount);
+
+        //Debug.Log(Timer.deadcount);
         if (isColliding == false && Timer.time == 5)
         {
             SetOrder();
@@ -84,6 +85,8 @@ public class Command : MonoBehaviour
         string text = csvData[randomIndex][0];
         orderText.text = text;
 
+        Debug.Log(randomIndex);
+        if(randomIndex == )
     }
 
     private void OnCollisionEnter2D(Collision2D collsion)
