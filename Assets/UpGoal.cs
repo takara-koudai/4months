@@ -5,9 +5,9 @@ using UnityEngine;
 public class UpGoal : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField]
-    private int goalNum = 0;
-    public static bool flag = true;
+   // [SerializeField]
+   // private int goalNum = 0;
+   // public static bool flag = true;
     void Start()
     {
         

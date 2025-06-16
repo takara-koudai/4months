@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using TMPro;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -86,7 +85,7 @@ public class Command : MonoBehaviour
         orderText.text = text;
 
         Debug.Log(randomIndex);
-        if(randomIndex == )
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collsion)
