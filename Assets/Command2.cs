@@ -1,26 +1,19 @@
-using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
+using UnityEngine;
 using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
-public class Command : MonoBehaviour
+public class Command2 : MonoBehaviour
 {
+    // Start is called before the first frame update
 
-    //Start is called before the first frame update
-
-    Dictionary<string, Vector2> movementMap = new Dictionary<string, Vector2>();
-
-    private  TextAsset csvFile;
+    private TextAsset csvFile;
     [SerializeField]
-    private  Text orderText;
-    bool isColliding = false;
-    bool isColliding2 = true;
-    bool isColliding3 = true;
+    private Text orderText;
     List<string[]> csvData = new List<string[]>();
+
     public class QA
     {
         public string order;
@@ -33,11 +26,9 @@ public class Command : MonoBehaviour
         }
     }
 
-
     void Start()
     {
-
-        csvFile = Resources.Load<TextAsset>("NotNot1");
+        csvFile = Resources.Load<TextAsset>("NotNot2");
         if (csvFile == null)
         {
             Debug.LogError("CSVÉtÉ@ÉCÉãÇ™å©Ç¬Ç©ÇËÇ‹ÇπÇÒ");
@@ -54,29 +45,11 @@ public class Command : MonoBehaviour
 
 
         string[] lines = csvFile.text.Split(new char[] { '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries);
-        //SetOrder();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        //Debug.Log(Timer.deadcount);
-        if (isColliding == false && Timer.time == 5)
-        {
-            SetOrder();
-            Timer.deadcount += 1;
-        }
-        if (isColliding2 == false && Timer.time == 5)
-        {
-            SetOrder();
-            Timer.deadcount += 1;
-        }
-        if (isColliding3 == false && Timer.time == 5)
-        {
-            SetOrder();
-            Timer.deadcount += 1;
-        }
         
     }
 
@@ -87,12 +60,10 @@ public class Command : MonoBehaviour
         orderText.text = text;
         // Debug.Log(randomIndex);
     }
-
-
     private void OnCollisionEnter2D(Collision2D collsion)
-    {   
+    {
         //ê≥â
-        
+
         if (collsion.gameObject.CompareTag("Goal"))
         {
             transform.position = player.teleport;
@@ -103,6 +74,7 @@ public class Command : MonoBehaviour
             Command command = new Command();
             command = command.gameObject.GetComponent<Command>();
             coalNum = goal.getGoalNum();
+            
 
         }
 
@@ -118,33 +90,6 @@ public class Command : MonoBehaviour
             Timer.time = 5f;
             SetOrder();
         }
-        
+
     }
-
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Goal"))
-        {
-            isColliding = true;
-        }
-        if (collision.gameObject.CompareTag("Goal2"))
-        {
-            isColliding2 = true;
-        }
-        if (collision.gameObject.CompareTag("Goal3"))
-        {
-            isColliding3 = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        isColliding = false;
-        isColliding2 = false;
-        isColliding3 = false;
-    }
-
-
-   
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -49,28 +50,19 @@ public class player : MonoBehaviour
         {
             SceneManager.LoadScene(nextSceneName);
         }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collsion)
     {
-        if (collsion.gameObject.CompareTag("Goal"))
+        if (collsion.gameObject.tag == "Goal")
         {
-            Debug.Log("è’ìÀÇµÇ‹ÇµÇΩ");
+            Goal goal = collsion.gameObject.GetComponent<Goal>();
+            int coalNum = goal.getGoalNum();
+            Debug.Log(coalNum);
             transform.position = teleport;
             Timer.time = 5f;
-        }
-        if (collsion.gameObject.CompareTag("Goal2"))
-        {
-            Debug.Log("è’ìÀÇµÇ‹ÇµÇΩ");
-            transform.position = teleport;
-            Timer.time = 5f;
-        }
 
-        if (collsion.gameObject.CompareTag("Goal3"))
-        {
-            Debug.Log("è’ìÀÇµÇ‹ÇµÇΩ");
-            transform.position = teleport;
-            Timer.time = 5f;
         }
 
         if (collsion.gameObject.CompareTag("Dead"))
@@ -78,8 +70,11 @@ public class player : MonoBehaviour
             transform.position = teleport;
             Timer.deadcount++;
             Timer.time = 5f;
+
         }
 
     }
+
+  
 
 }
