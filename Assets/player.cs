@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class player : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public Rigidbody2D rb;
     float moveSpeed = 4f;
@@ -12,6 +12,8 @@ public class player : MonoBehaviour
     public static Vector2 teleport;
     // private bool isJamp;
     public string nextSceneName;
+    public bool isGoal = false;
+    public int goalNum = -1;
 
     // Start is called before the first frame update
     void Start()
@@ -58,11 +60,11 @@ public class player : MonoBehaviour
         if (collsion.gameObject.tag == "Goal")
         {
             Goal goal = collsion.gameObject.GetComponent<Goal>();
-            int coalNum = goal.getGoalNum();
-            Debug.Log(coalNum);
+            goalNum = goal.getGoalNum();
+            Debug.Log(goalNum);
             transform.position = teleport;
             Timer.time = 5f;
-
+            isGoal = true;
         }
 
         if (collsion.gameObject.CompareTag("Dead"))

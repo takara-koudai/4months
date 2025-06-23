@@ -95,7 +95,7 @@ public class Command : MonoBehaviour
         
         if (collsion.gameObject.CompareTag("Goal"))
         {
-            transform.position = player.teleport;
+            transform.position = Player.teleport;
             Timer.time = 5f;
             SetOrder();
             Goal goal = collsion.gameObject.GetComponent<Goal>();
@@ -108,13 +108,13 @@ public class Command : MonoBehaviour
 
         if (collsion.gameObject.CompareTag("Goal"))
         {
-            transform.position = player.teleport;
+            transform.position = Player.teleport;
             Timer.time = 5f;
             SetOrder();
         }
         if (collsion.gameObject.CompareTag("Goal"))
         {
-            transform.position = player.teleport;
+            transform.position = Player.teleport;
             Timer.time = 5f;
             SetOrder();
         }

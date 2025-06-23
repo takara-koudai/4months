@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,10 @@ public class Command2 : MonoBehaviour
     [SerializeField]
     private Text orderText;
     List<string[]> csvData = new List<string[]>();
-
+    Player player = null;
+    private int currentGoalNum = -1;
+    private int Correct = 0;
+    private int Notcorrect = 0;
     public class QA
     {
         public string order;
@@ -45,12 +49,32 @@ public class Command2 : MonoBehaviour
 
 
         string[] lines = csvFile.text.Split(new char[] { '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries);
+
+        player= GameObject.FindObjectOfType<Player>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (player.isGoal)
+        {
+            if(player.goalNum == csvData.Count)
+            {
+                Correct++;
+                Debug.Log(Correct);
+                SetOrder();
+                player.isGoal = false;
+            }
+
+            else if(player.goalNum != csvData.Count)
+            {
+                Notcorrect += 1;
+                Debug.Log(Notcorrect);
+                player.isGoal = false;
+                SetOrder();
+            }
+
+        }
     }
 
     public void SetOrder()
@@ -60,36 +84,34 @@ public class Command2 : MonoBehaviour
         orderText.text = text;
         // Debug.Log(randomIndex);
     }
-    private void OnCollisionEnter2D(Collision2D collsion)
-    {
-        //ê≥â
+    //private void OnCollisionEnter2D(Collision2D collsion)
+    //{
+    //    //ê≥â
 
-        if (collsion.gameObject.CompareTag("Goal"))
-        {
-            transform.position = player.teleport;
-            Timer.time = 5f;
-            SetOrder();
-            Goal goal = collsion.gameObject.GetComponent<Goal>();
-            int coalNum = goal.getGoalNum();
-            Command command = new Command();
-            command = command.gameObject.GetComponent<Command>();
-            coalNum = goal.getGoalNum();
-            
+    //    if (collsion.gameObject.CompareTag("Goal"))
+    //    {
+    //        transform.position = Player.teleport;
+    //        Timer.time = 5f;
+    //        SetOrder();
+    //        Goal goal = collsion.gameObject.GetComponent<Goal>();
+    //        int coalNum = goal.getGoalNum();
+    //        Command command = new Command();
+    //        command = command.gameObject.GetComponent<Command>();
+    //        coalNum = goal.getGoalNum();
+    //    }
 
-        }
+    //    if (collsion.gameObject.CompareTag("Goal"))
+    //    {
+    //        transform.position = Player.teleport;
+    //        Timer.time = 5f;
+    //        SetOrder();
+    //    }
+    //    if (collsion.gameObject.CompareTag("Goal"))
+    //    {
+    //        transform.position = Player.teleport;
+    //        Timer.time = 5f;
+    //        SetOrder();
+    //    }
 
-        if (collsion.gameObject.CompareTag("Goal"))
-        {
-            transform.position = player.teleport;
-            Timer.time = 5f;
-            SetOrder();
-        }
-        if (collsion.gameObject.CompareTag("Goal"))
-        {
-            transform.position = player.teleport;
-            Timer.time = 5f;
-            SetOrder();
-        }
-
-    }
+    //}
 }

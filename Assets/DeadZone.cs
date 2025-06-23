@@ -20,7 +20,7 @@ public class DeadZone : MonoBehaviour
     {
         if (collsion.gameObject.CompareTag("Dead"))
         {
-           transform.position =  player.teleport;
+           transform.position =  Player.teleport;
             Timer.deadcount++;
         }
 
