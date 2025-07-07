@@ -502,7 +502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goalNum: 10
-  Count: 0
+  Count: 10
 --- !u!1 &343889588
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,7 +629,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goalNum: 9
-  Count: 0
+  Count: 9
 --- !u!1 &518522472
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,7 +1182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goalNum: 10
-  Count: 0
+  Count: 10
 --- !u!1 &1115803554
 GameObject:
   m_ObjectHideFlags: 0
@@ -1308,7 +1308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goalNum: 11
-  Count: 0
+  Count: 11
 --- !u!1 &1388921393
 GameObject:
   m_ObjectHideFlags: 0
@@ -1434,7 +1434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goalNum: 9
-  Count: 0
+  Count: 9
 --- !u!1 &1426741701
 GameObject:
   m_ObjectHideFlags: 0
@@ -1517,6 +1517,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1426741702}
   nextSceneName: OP
+  isGoal: 0
+  goalNum: -1
 --- !u!212 &1426741705
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1597,6 +1599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orderText: {fileID: 518522474}
+  nextSceneName: 
 --- !u!1 &1680895588
 GameObject:
   m_ObjectHideFlags: 0
@@ -1753,6 +1756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orderText: {fileID: 518522474}
+  nextSceneName: OP
 --- !u!4 &1681471651
 Transform:
   m_ObjectHideFlags: 0

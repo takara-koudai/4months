@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Threading;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Command : MonoBehaviour
@@ -21,6 +23,12 @@ public class Command : MonoBehaviour
     bool isColliding2 = true;
     bool isColliding3 = true;
     List<string[]> csvData = new List<string[]>();
+    Player player = null;
+    Goal goal = null;
+    private int currentGoalNum = -1;
+    private int Correct = 0;
+    private int Notcorrect = 0;
+    public string nextSceneName;
     public class QA
     {
         public string order;
@@ -54,13 +62,21 @@ public class Command : MonoBehaviour
 
 
         string[] lines = csvFile.text.Split(new char[] { '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries);
+
+        player = GameObject.FindObjectOfType<Player>();
+        goal = goal.gameObject.GetComponent<Goal>();
         //SetOrder();
     }
 
     // Update is called once per frame
     void Update()
     {
+       
+        if (Timer.time ==5)
+        {
+            SetOrder();
 
+        }
         //Debug.Log(Timer.deadcount);
         if (isColliding == false && Timer.time == 5)
         {
@@ -77,15 +93,40 @@ public class Command : MonoBehaviour
             SetOrder();
             Timer.deadcount += 1;
         }
-        
+        if (player.isGoal)
+        {
+            if (player.goalNum == csvData.Count)
+            {
+                Correct+=1;
+                Debug.Log(Correct);
+                SetOrder();
+                player.isGoal = false;
+            }
+
+            else if (player.goalNum != csvData.Count)
+            {
+                Notcorrect += 1;
+                Debug.Log(Notcorrect);
+                player.isGoal = false;
+                SetOrder();
+            }
+
+        }
+
+        if(Notcorrect == 5)
+        {
+            SceneManager.LoadScene(nextSceneName);
+        }
     }
 
     public void SetOrder()
     {
+
         int randomIndex = Random.Range(1, csvData.Count - 1);
         string text = csvData[randomIndex][0];
         orderText.text = text;
         // Debug.Log(randomIndex);
+
     }
 
 

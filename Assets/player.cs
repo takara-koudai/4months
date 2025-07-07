@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
         {
             Goal goal = collsion.gameObject.GetComponent<Goal>();
             goalNum = goal.getGoalNum();
-            Debug.Log(goalNum);
+            //Debug.Log(goalNum);
             transform.position = teleport;
             Timer.time = 5f;
             isGoal = true;
