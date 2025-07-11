@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     public Rigidbody2D rb;
-    float moveSpeed = 4f;
+    float moveSpeed = 6f;
     float jampspeed = 6f;
     public static Vector2 teleport;
     // private bool isJamp;

@@ -1,10 +1,11 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.IO;
 using TMPro;
 using UnityEngine;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class Command2 : MonoBehaviour
 {
@@ -18,6 +19,12 @@ public class Command2 : MonoBehaviour
     private int currentGoalNum = -1;
     private int Correct = 0;
     private int Notcorrect = 0;
+
+    bool isColliding = false;
+    bool isColliding2 = true;
+    bool isColliding3 = true;
+    public string nextSceneName;
+    public string nextSceneName2;
     public class QA
     {
         public string order;
@@ -56,6 +63,22 @@ public class Command2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isColliding == false && Timer.time == 5)
+        {
+            SetOrder();
+            Timer.deadcount += 1;
+        }
+        if (isColliding2 == false && Timer.time == 5)
+        {
+            SetOrder();
+            Timer.deadcount += 1;
+        }
+        if (isColliding3 == false && Timer.time == 5)
+        {
+            SetOrder();
+            Timer.deadcount += 1;
+        }
+
         if (player.isGoal)
         {
             if(player.goalNum == csvData.Count)
@@ -75,6 +98,16 @@ public class Command2 : MonoBehaviour
             }
 
         }
+        if(Correct == 5)
+        {
+            SceneManager.LoadScene(nextSceneName);
+
+        }
+        if(Notcorrect == 5)
+        {
+            SceneManager.LoadScene(nextSceneName2);
+        }
+
     }
 
     public void SetOrder()

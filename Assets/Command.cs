@@ -29,6 +29,7 @@ public class Command : MonoBehaviour
     private int Correct = 0;
     private int Notcorrect = 0;
     public string nextSceneName;
+    public string nextSceneName2;
     public class QA
     {
         public string order;
@@ -101,6 +102,7 @@ public class Command : MonoBehaviour
                 Debug.Log(Correct);
                 SetOrder();
                 player.isGoal = false;
+                Debug.Log(Correct);
             }
 
             else if (player.goalNum != csvData.Count)
@@ -112,11 +114,15 @@ public class Command : MonoBehaviour
             }
 
         }
-
+        if(Correct == 5)
+        {
+            SceneManager.LoadScene(nextSceneName2);
+        }
         if(Notcorrect == 5)
         {
             SceneManager.LoadScene(nextSceneName);
         }
+
     }
 
     public void SetOrder()
